@@ -1,0 +1,56 @@
+<%- include ('../partials/header') %>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1><%= title %></h1>
+    <br>
+    <div class="row" >
+        <div class="float-start">
+            <a href="/todo/add" class="btn btn-primary align-self-end" role="button">                
+                <i class="fas fa-plus-circle"></i> 
+                Add a new Todo
+            </a> 
+        </div>           
+    </div>
+    <br>   
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <!-- Header Row-->
+            <tr>
+                <th class="text-center">Task</th>                    
+                <th class="text-center">Description</th>
+                <th class="text-center">Complete</th>
+                <th class="text-center" colspan="3">Actions</th>
+            </tr>
+
+            <!-- Repeatable Template Row -->
+
+            <% for(let i = 0; i < TodoList.length; i++) { %>
+                <tr>
+                    <td class="text-center"><%= TodoList[i].task %></td>
+                    <td class="text-center"><%= TodoList[i].description %></td>
+                    <td class="text-center"><%= TodoList[i].complete %></td>                        
+                    <td class="text-center">
+                        <a href="/todo/details/<%= TodoList[i]._id %>" class="btn btn-success btn-sm"> 
+                        <i class="fas fa-info"></i>
+                    Details </a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/todo/edit/<%= TodoList[i]._id %>" 
+                            class="btn btn-primary btn-sm">
+                            <i class="fa fa-pencil"></i>
+                        Edit</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/todo/delete/<%= TodoList[i]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        Remove</a>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+  </main>
+  
+<%- include ('../partials/footer') %>
