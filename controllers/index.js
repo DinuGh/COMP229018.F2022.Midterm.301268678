@@ -3,7 +3,6 @@
 
 exports.home = function(req, res, next) {
     console.log('===> Original URL: ' + req.session.url);
-   //TODO 
     res.render('index', { 
         title: 'Home',
         username: req.user ? req.user.username : ''
